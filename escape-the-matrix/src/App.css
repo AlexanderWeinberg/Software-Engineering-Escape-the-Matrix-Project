@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.Settings-header {
+  background-color: #1235b1;
+}
