@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import LoginButton from "./login_Button.js";
+import TextInput from "./TextInput.js";
+import UserResponse from "./UserResponses.js";
 
 function App() {
   const [user, setUser] = useState(null) //setUser is declared
@@ -25,6 +27,10 @@ function App() {
         >
           Learn React
         </a>
+        <TextInput promptText="Enter Name: " field="name" user={user} />
+        <p>TOP PLAYERS:
+        <UserResponse />
+        </p>
       </header>
     </div>
   );
