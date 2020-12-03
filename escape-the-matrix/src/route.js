@@ -15,6 +15,11 @@ export default function Routes() {
     return (
         <Router>
             <div>
+
+
+
+                {/* For Development Purposes */}
+                <p>For Developmental Purposes</p>
                 <ul>
                     <li>
                         <Link to="/Home">Home</Link>
@@ -29,6 +34,11 @@ export default function Routes() {
                         <Link to="/Highscores">Highscores</Link>
                     </li>
                 </ul>
+
+                {/* Will Comment out later */}
+
+
+
 
                 <hr />
 
@@ -50,3 +60,4 @@ export default function Routes() {
         </Router>
     );
 }
+

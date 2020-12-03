@@ -11,8 +11,10 @@ function UserResponses({ collectionName }) {
                 .onSnapshot((querySnapshot) => {
                     var firestoreData = [];
                     querySnapshot.forEach(function (doc) {
-                        firestoreData.push({ name: doc.data().name, score: doc.data().score, rank: doc.data().rank, id: doc.id });
+
+                        firestoreData.push({ name: doc.data().name, score: doc.data().score, id: doc.id });
                     });
+
                     setDataList(firestoreData);
                 });
             return () => unsubscribe()
@@ -24,10 +26,12 @@ function UserResponses({ collectionName }) {
         <div>
             <ul>
                 {dataList.map((data) => {
-                    return (<li key={data.id}>{data.rank}. {data.score}.......  {data.name}</li>)
+                    return (<li key={data.id}>{data.name} ..........{data.score}</li>)
                 })}
             </ul>
         </div>);
 };
+
+
 
 export default UserResponses;
