@@ -10,6 +10,8 @@ import Home from './Home.js';
 import Settings from './Settings.js';
 import Game from './Game.js';
 import Highscores from './Highscores.js';
+import SuddenDeath from './SuddenDeathGame';
+import SuddenDeathScores from './SuddenDeathScore'
 
 export default function Routes() {
     return (
@@ -33,6 +35,12 @@ export default function Routes() {
                     <li>
                         <Link to="/Highscores">Highscores</Link>
                     </li>
+                    <li>
+                        <Link to="/SuddenDeathGame">One Hit Gameplay</Link>
+                    </li>
+                    <li>
+                        <Link to="/SuddenDeathScores">One Hit Highscores</Link>
+                    </li>
                 </ul>
 
                 {/* Will Comment out later */}
@@ -54,6 +62,12 @@ export default function Routes() {
                     </Route>
                     <Route path="/Highscores">
                         <Highscores />
+                    </Route>
+                    <Route path="/SuddenDeathGame">
+                        <SuddenDeath />
+                    </Route>
+                    <Route path="/SuddenDeathScores">
+                        <SuddenDeathScores />
                     </Route>
                 </Switch>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import './Settings.css';
+import './App.css';
 import { Link } from "react-router-dom";
 import { Container } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
@@ -13,6 +14,7 @@ import { ToggleButtonGroup } from '@material-ui/lab';
 
 function Settings() {
     const [difficulty, setDifficulty] = useState(1);
+    const [gameType, setGameType] = React.useState(false);
     const [view, setView] = React.useState('list');
     const handleChange = (event, nextView) => {
         setView(nextView);
@@ -38,49 +40,89 @@ function Settings() {
     }
 
 
+    function Gametype() {
+        if (gameType == false) {
+            return (<Link to="/Game">
+                <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
+            </Link>);
+        } else {
+            return (
+                <div>
+                    <p>ONE-HIT MODE ACTIVATED</p>
+                    <Link to="/SuddenDeathGame">
+                        <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
+                    </Link>
+                </div>
+            );
+        }
+    }
+
 
     return (
-        <div>
-            <Container fixed maxWidth='md' >
+        <div className="App">
+            <header className="App-header">
+                <Container fixed maxWidth='md' >
+                    <div className="App-menu">
 
-                <h5><u>Initial Difficulty</u></h5>
-                {/* <Button variant="contained" color="primary" onClick={() => setDifficulty(1)} >Difficulty Set Test</Button > */}
+
+                        <h5><u>Initial Difficulty</u></h5>
+                        {/* <Button variant="contained" color="primary" onClick={() => setDifficulty(1)} >Difficulty Set Test</Button > */}
 
 
-                <ToggleButtonGroup value={view} exclusive onChange={handleChange}>
+                        <ToggleButtonGroup className="Toggle" value={view} exclusive onChange={handleChange}>
 
-                    {/* Easy check box */}
-                    <ToggleButton
-                        value="easy" onClick={() => setDifficulty(1)}>
-                        <CheckIcon />Easy
+                            {/* Easy check box */}
+                            <ToggleButton
+                                value="easy" onClick={() => setDifficulty(1)}>
+                                <CheckIcon />Easy
                 </ToggleButton>
 
-                    {/* medium check box */}
-                    <ToggleButton
-                        value="medium" onClick={() => setDifficulty(2)}
-                    >
-                        <CheckIcon />Medium
+                            {/* medium check box */}
+                            <ToggleButton
+                                value="medium" onClick={() => setDifficulty(2)}
+                            >
+                                <CheckIcon />Medium
                 </ToggleButton>
 
-                    {/* hard check box */}
-                    <ToggleButton onClick={() => setDifficulty(3)}
-                        value="hard"
-                    >
-                        <CheckIcon /> Hard
+                            {/* hard check box */}
+                            <ToggleButton onClick={() => setDifficulty(3)}
+                                value="hard"
+                            >
+                                <CheckIcon /> Hard
                 </ToggleButton>
-                </ToggleButtonGroup>
+                        </ToggleButtonGroup>
 
 
-                <div>
-                    <Difficulty />
-                </div>
 
-                <Link to="/Game">
-                    <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
-                </Link>
+                        <div>
+                            <Difficulty />
+                        </div>
 
-            </Container>
+                        <h5><u>Sudden Death Mode</u></h5>
 
+                        <ToggleButton
+                            className="Toggle"
+                            value="check"
+                            oneHit={gameType}
+                            onChange={() => {
+                                setGameType(!gameType);
+                            }}
+                        >
+                            <CheckIcon />
+                        </ToggleButton>
+
+
+                        <div>
+                            <Gametype />
+                        </div>
+
+
+
+
+
+                    </div>
+                </Container>
+            </header>
         </div>
 
 

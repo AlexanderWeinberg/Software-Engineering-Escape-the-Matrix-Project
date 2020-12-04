@@ -8,7 +8,7 @@ import UserResponse from "./UserResponses.js";
 import YourRank from "./YourRank.js";
 
 
-function Highscores() {
+function SuddenDeathScores() {
     return (
 
         <div className="App">
@@ -17,10 +17,10 @@ function Highscores() {
                     <div className="App-menu">
 
 
-                        <p>This is the where the highscores will be after the game is done</p>
+                        <p>This is the where the SUDDEN DEATH highscores will be after the game is done</p>
 
                         {/* is going to show the top five users from the data base */}
-                        <p>TOP PLAYER HIGHSCORES:
+                        <p>TOP ONE-HIT PLAYER HIGHSCORES:
         <UserResponse />
                         </p>
 
@@ -54,4 +54,4 @@ function Highscores() {
     );
 }
 
-export default Highscores;
+export default SuddenDeathScores;

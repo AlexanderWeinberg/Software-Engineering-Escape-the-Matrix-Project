@@ -7,7 +7,7 @@ function UserResponses({ collectionName }) {
 
     useEffect(
         () => {
-            const unsubscribe = firebase.firestore().collection("users")
+            const unsubscribe = firebase.firestore().collection("users").orderBy("score", "desc")
                 .onSnapshot((querySnapshot) => {
                     var firestoreData = [];
                     querySnapshot.forEach(function (doc) {

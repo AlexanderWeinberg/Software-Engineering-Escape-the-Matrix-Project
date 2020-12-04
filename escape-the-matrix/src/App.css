@@ -13,15 +13,29 @@
   }
 }
 
-.App-header {
-  background-color: #26062e;
+/* makes purple background and centered work */
+.App-header { 
+  background-color:#110214;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+}
+
+/* makes grey background menu box */
+.App-menu{
+  
+  border: 10px black;
+    padding: 15px;
+    background-color: #c3bec4;
+    background-clip: border-box; 
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 .App-link {
