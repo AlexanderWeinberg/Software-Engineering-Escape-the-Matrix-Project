@@ -4,13 +4,14 @@ import './Home.css';
 import './App.css';
 import LoginButton from "./login_Button.js";
 import TextInput from "./TextInput.js";
-import UserResponse from "./UserResponses.js";
 import { Link } from "react-router-dom";
 import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 function Home() {
     const [user, setUser] = useState(null) //setUser is declared
+    const [suddenuser, setsuddenUser] = useState(user)//sets username for sudden death run to match
+
     return (
         <div className="App">
 
