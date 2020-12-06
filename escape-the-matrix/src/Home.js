@@ -7,6 +7,7 @@ import TextInput from "./TextInput.js";
 import { Link } from "react-router-dom";
 import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Nero from './Nero Ship.png';
 
 function Home() {
     const [user, setUser] = useState(null) //setUser is declared
@@ -19,8 +20,12 @@ function Home() {
                 <div className="App-menu">
 
                     {/* Login Button and login success message */}
-                    <div>
+                    <div className="Login-buttton">
                         <LoginButton setUser={(user) => setUser(user)} />
+                    </div>
+
+                    <div>
+
                         {user != null && <p> Welcome to the Matrix, {user.displayName}</p>}
                     </div>
 
@@ -30,9 +35,9 @@ function Home() {
                         Escape the Matrix
                         </div>
 
-
-                    <td><img src="/Nero Ship.png" alt="" /></td>
-
+                    <div className="Ship">
+                        <td><img src={Nero} alt="" width="200" height="300" /></td>
+                    </div>
                     <TextInput promptText="Enter UserName: " field="name" user={user} />
                     <Link to="/Settings">
                         <Button variant="contained" color="primary" >Enter</Button >

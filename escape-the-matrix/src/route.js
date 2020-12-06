@@ -51,6 +51,9 @@ export default function Routes() {
                 <hr />
 
                 <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
                     <Route exact path="/Home">
                         <Home />
                     </Route>

@@ -42,13 +42,16 @@ function Settings() {
 
     function Gametype() {
         if (gameType == false) {
-            return (<Link to="/Game">
-                <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
-            </Link>);
+            return (
+                <div><p>ONE-HIT MODE: DEACTIVATED</p>
+                    <Link to="/Game">
+                        <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
+                    </Link>
+                </div >);
         } else {
             return (
                 <div>
-                    <p>ONE-HIT MODE ACTIVATED</p>
+                    <p>ONE-HIT MODE: ACTIVATED</p>
                     <Link to="/SuddenDeathGame">
                         <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
                     </Link>
