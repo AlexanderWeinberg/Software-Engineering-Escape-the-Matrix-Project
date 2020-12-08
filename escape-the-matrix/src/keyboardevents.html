@@ -1,0 +1,18 @@
+<html>
+
+<head>
+
+    <title>Key press events</title>
+
+    <script>
+
+        window.addEventListener("keydown", checkKeyPress, false);
+
+        function checkKeyPress(key) {
+            if (key.keyCode == "32") {
+                alert("The 'SPACEBAR' key has been pressed!");
+            }
+        }
+
+    </script>
+</head>

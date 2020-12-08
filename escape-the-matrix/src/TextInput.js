@@ -18,6 +18,19 @@ function TextInput({ promptText, user, field }) {
                 }).catch((error) => {
                     console.error("Error adding document: ", error);
                 });
+
+        }
+
+
+        //to also log in for sudden death ranking
+        if (user && user.uid) {
+            firebase.firestore().collection("suddenusers").doc(user.uid)
+                .set({ [field]: promptResponse }, { merge: true })
+                .then(() => {
+                    console.log("Document written!");
+                }).catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
         }
     }
 

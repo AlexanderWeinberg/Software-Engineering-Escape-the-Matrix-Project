@@ -1,0 +1,13 @@
+.Game-Background{
+    /* display: flex; */
+    background-image:url("./background.png");
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100%;
+}
+.Game-Area {
+   position: fixed;
+}

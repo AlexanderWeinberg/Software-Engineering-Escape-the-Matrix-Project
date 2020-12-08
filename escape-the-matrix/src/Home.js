@@ -11,7 +11,11 @@ import Nero from './Nero Ship.png';
 
 function Home() {
     const [user, setUser] = useState(null) //setUser is declared
-    const [suddenuser, setsuddenUser] = useState(user)//sets username for sudden death run to match
+
+
+    function returnuser() {
+        return user;
+    }
 
     return (
         <div className="App">
@@ -38,10 +42,16 @@ function Home() {
                     <div className="Ship">
                         <td><img src={Nero} alt="" width="200" height="300" /></td>
                     </div>
-                    <TextInput promptText="Enter UserName: " field="name" user={user} />
-                    <Link to="/Settings">
-                        <Button variant="contained" color="primary" >Enter</Button >
-                    </Link>
+
+                    <div className="Username-Button">
+                        <TextInput promptText="Enter UserName: " field="name" user={user} />
+                    </div>
+
+                    <div className="Enter-Button">
+                        <Link to="/Settings">
+                            <Button variant="contained" color="primary" >Enter</Button >
+                        </Link>
+                    </div>
                 </div>
             </header>
         </div>

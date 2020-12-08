@@ -34,7 +34,7 @@ function Settings() {
         }
         return (
             <div>
-                <h5>Current Difficulty is {diff}</h5>
+                <h5>Current Difficulty is <b>{diff}</b></h5>
             </div>
         );
     }
@@ -51,7 +51,7 @@ function Settings() {
         } else {
             return (
                 <div>
-                    <p>ONE-HIT MODE: ACTIVATED</p>
+                    <p>ONE-HIT MODE: <b>ACTIVATED</b></p>
                     <Link to="/SuddenDeathGame">
                         <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
                     </Link>

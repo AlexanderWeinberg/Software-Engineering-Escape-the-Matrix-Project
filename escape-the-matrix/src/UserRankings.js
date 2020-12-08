@@ -42,7 +42,7 @@ function UserResponses({ collectionName }) {
                 <Container fixed maxWidth='md' >
                     <ul >
                         {dataList.map((data) => {
-                            return (<li key={data.id}>{count++}. {data.name} ..........{data.score}</li>)
+                            return (<li key={data.id}>{count++}. {data.name} ...............  {data.score}</li>)
                         })}
                     </ul>
                 </Container>
