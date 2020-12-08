@@ -1,0 +1,47 @@
+import React, { useState } from 'react';
+import firebase from 'firebase';
+
+function TextInput({ promptText, user, field }) {
+
+    const [text, setText] = useState("");
+
+    function getUserInput() {
+        const promptResponse = prompt(promptText);
+        console.log(promptResponse);
+        setText(promptResponse);
+
+        if (user && user.uid) {
+            firebase.firestore().collection("users").doc(user.uid)
+                .set({ [field]: promptResponse }, { merge: true })
+                .then(() => {
+                    console.log("Document written!");
+                }).catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
+
+        }
+
+
+        //to also log in for sudden death ranking
+        if (user && user.uid) {
+            firebase.firestore().collection("suddenusers").doc(user.uid)
+                .set({ [field]: promptResponse }, { merge: true })
+                .then(() => {
+                    console.log("Document written!");
+                }).catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
+        }
+    }
+
+    return (
+        <p>
+            <button onClick={() => getUserInput()}>
+                {promptText}
+            </button>
+            {text}
+        </p>
+    );
+}
+export default TextInput;
+

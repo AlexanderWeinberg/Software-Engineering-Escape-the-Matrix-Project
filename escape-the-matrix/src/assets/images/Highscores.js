@@ -8,7 +8,7 @@ import UserResponse from "./UserRankings.js";
 import YourRank from "./YourRank.js";
 
 
-function SuddenDeathScores() {
+function Highscores() {
     return (
 
         <div className="App">
@@ -20,13 +20,16 @@ function SuddenDeathScores() {
 
 
                         {/* is going to show the top five users from the data base */}
-                        <p><u>TOP MINEFIELD PLAYER HIGHSCORES:</u>
-                            <UserResponse collectionName={"suddenusers"} />
+                        <p><u>TOP PLAYER HIGHSCORES: </u>
+
+                            <UserResponse collectionName={"users"} />
+
                         </p>
+
 
                         {/* Is going to show current users rank within database */}
                         <p><u>Your Rank: </u>
-                            <YourRank collectionName={"suddenusers"} />
+                            <YourRank collectionName={"users"} />
                         </p>
 
                         {/* button that jumps back to home page */}
@@ -54,4 +57,4 @@ function SuddenDeathScores() {
     );
 }
 
-export default SuddenDeathScores;
+export default Highscores;

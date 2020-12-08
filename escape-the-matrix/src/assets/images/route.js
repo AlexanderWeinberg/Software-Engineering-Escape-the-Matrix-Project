@@ -10,8 +10,8 @@ import Home from './Home.js';
 import Settings from './Settings.js';
 import Game from './Game.jsx';
 import Highscores from './Highscores.js';
-import SuddenDeath from './SuddenDeathGame.jsx';
-import SuddenDeathScores from './SuddenDeathScore.js'
+import SuddenDeath from './SuddenDeathGame';
+import SuddenDeathScores from './SuddenDeathScore'
 
 export default function Routes() {
     return (

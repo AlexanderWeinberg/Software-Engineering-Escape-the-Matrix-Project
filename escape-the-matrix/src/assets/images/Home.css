@@ -1,0 +1,21 @@
+.home-title{
+  background-color: #000000;
+  background-clip: border-box; 
+  padding: 20px;
+  border-top-right-radius: 38px;
+  border-top-left-radius: 38px;
+  border-bottom-left-radius: 38px;
+  border-bottom-right-radius: 38px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: aliceblue;
+  font-size: 72px;
+
+}
+.Login-buttton{
+  margin-bottom: 20px;
+  margin-left: 500px;
+}
+.Ship{
+  margin-top: 20px;
+  margin-left: 250px;
+}

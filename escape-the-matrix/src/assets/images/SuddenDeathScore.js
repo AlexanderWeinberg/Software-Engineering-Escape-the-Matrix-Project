@@ -20,7 +20,7 @@ function SuddenDeathScores() {
 
 
                         {/* is going to show the top five users from the data base */}
-                        <p><u>TOP MINEFIELD PLAYER HIGHSCORES:</u>
+                        <p><u>TOP ONE-HIT PLAYER HIGHSCORES:</u>
                             <UserResponse collectionName={"suddenusers"} />
                         </p>
 

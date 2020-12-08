@@ -26,11 +26,11 @@ function Settings() {
 
         var diff;
         if (difficulty == 1) {
-            diff = " Easy: 6 PIXELS"
+            diff = " Easy: 6'"
         } else if (difficulty == 2) {
-            diff = "Medium: 10 PIXELS"
+            diff = "Medium: 10'"
         } else {
-            diff = "Hard: 21 PIXELS"
+            diff = "Hard: 21'"
         }
         return (
             <div>
@@ -43,7 +43,7 @@ function Settings() {
     function Gametype() {
         if (gameType == false) {
             return (
-                <div><p>MINEFIELD MODE: DEACTIVATED</p>
+                <div><p>ONE-HIT MODE: DEACTIVATED</p>
                     <Link to="/Game">
                         <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
                     </Link>
@@ -51,7 +51,7 @@ function Settings() {
         } else {
             return (
                 <div>
-                    <p>MINEFIELD MODE: <b>ACTIVATED</b></p>
+                    <p>ONE-HIT MODE: <b>ACTIVATED</b></p>
                     <Link to="/SuddenDeathGame">
                         <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
                     </Link>
@@ -101,7 +101,7 @@ function Settings() {
                             <Difficulty />
                         </div>
 
-                        <h5><u>Minefield Mode</u></h5>
+                        <h5><u>Sudden Death Mode</u></h5>
 
                         <ToggleButton
                             className="Toggle"
