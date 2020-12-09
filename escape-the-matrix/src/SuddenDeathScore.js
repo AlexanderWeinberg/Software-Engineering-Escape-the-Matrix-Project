@@ -25,7 +25,7 @@ function SuddenDeathScores() {
                         </p>
 
                         {/* Is going to show current users rank within database */}
-                        <p><u>Your Rank: </u>
+                        <p><u>Your Global Rank: </u>
                             <YourRank collectionName={"suddenusers"} />
                         </p>
 
@@ -40,7 +40,7 @@ function SuddenDeathScores() {
                             </Link>
 
                             {/* button that retrys the game */}
-                            <Link to="/Game">
+                            <Link to="/SuddenDeathGame">
                                 <Button variant="contained" color="secondary" >Retry</Button >
 
                             </Link>

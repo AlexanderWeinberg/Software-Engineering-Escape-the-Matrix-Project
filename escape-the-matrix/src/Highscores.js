@@ -28,7 +28,7 @@ function Highscores() {
 
 
                         {/* Is going to show current users rank within database */}
-                        <p><u>Your Rank: </u>
+                        <p><u>Your Global Rank: </u>
                             <YourRank collectionName={"users"} />
                         </p>
 

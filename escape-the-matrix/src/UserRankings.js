@@ -15,7 +15,6 @@ function UserResponses({ collectionName }) {
                     var firestoreData = [];
                     var topfive = [] //list that will track top 5
                     querySnapshot.forEach(function (doc) {
-
                         firestoreData.push({ name: doc.data().name, score: doc.data().score, id: doc.id });
 
                     });
@@ -26,10 +25,8 @@ function UserResponses({ collectionName }) {
                         ranker += 1;
                     };
 
-
-                    // });
                     setDataList(topfive);
-                    // setDataList(firestoreData);
+
                 });
             return () => unsubscribe()
         },

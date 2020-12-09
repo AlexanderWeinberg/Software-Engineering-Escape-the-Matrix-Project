@@ -22,7 +22,7 @@ export default function Routes() {
 
                 {/* For Development Purposes */}
 
-                <p>For Developmental Purposes</p>
+                {/* <p>For Developmental Purposes</p>
                 <ul>
                     <li>
                         <Link to="/Home">Home</Link>
@@ -43,7 +43,7 @@ export default function Routes() {
                         <Link to="/SuddenDeathScores">One Hit Highscores</Link>
                     </li>
                 </ul>
-                <hr />
+                <hr /> */}
 
                 {/* Will Comment out later */}
 

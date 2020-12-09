@@ -61,16 +61,16 @@ class Game extends React.Component {
             blockHeight: 0,
             gameLoopTimeout: 50,
             timeoutId: 0,
-            startSnakeSize: 0,
-            snake: [],
+            startshipSize: 0,
+            ship: [],
             apple: {},
             direction: 'right',
             directionChanged: false,
             isGameOver: false,
-            snakeColor: this.props.snakeColor || this.getRandomColor(),
+            shipColor: this.props.shipColor || this.getRandomColor(),
             appleColor: this.props.appleColor || this.getRandomColor(),
             score: 0,
-            highScore: Number(localStorage.getItem('snakeHighScore')) || 0,
+            highScore: Number(localStorage.getItem('shipHighScore')) || 0,
             newHighScore: false,
         }
     }
@@ -93,17 +93,17 @@ class Game extends React.Component {
         let blockWidth = width / 30
         let blockHeight = height / 20
 
-        // snake initialization
-        let startSnakeSize = this.props.startSnakeSize || 6
-        let snake = []
+        // ship initialization
+        let startshipSize = this.props.startshipSize || 6
+        let ship = []
         let Xpos = width / 2
         let Ypos = height / 2
-        let snakeHead = { Xpos: width / 2, Ypos: height / 2 }
-        snake.push(snakeHead)
-        for (let i = 1; i < startSnakeSize; i++) {
+        let shipHead = { Xpos: width / 2, Ypos: height / 2 }
+        ship.push(shipHead)
+        for (let i = 1; i < startshipSize; i++) {
             Xpos -= blockWidth
-            let snakePart = { Xpos: Xpos, Ypos: Ypos }
-            snake.push(snakePart)
+            let shipPart = { Xpos: Xpos, Ypos: Ypos }
+            ship.push(shipPart)
         }
 
         // apple position initialization
@@ -113,7 +113,7 @@ class Game extends React.Component {
         let appleYpos =
             Math.floor(Math.random() * ((height - blockHeight) / blockHeight + 1)) *
             blockHeight
-        while (appleYpos === snake[0].Ypos) {
+        while (appleYpos === ship[0].Ypos) {
             appleYpos =
                 Math.floor(Math.random() * ((height - blockHeight) / blockHeight + 1)) *
                 blockHeight
@@ -124,8 +124,8 @@ class Game extends React.Component {
             height,
             blockWidth,
             blockHeight,
-            startSnakeSize,
-            snake,
+            startshipSize,
+            ship,
             apple: { Xpos: appleXpos, Ypos: appleYpos },
         })
     }
@@ -133,8 +133,8 @@ class Game extends React.Component {
     gameLoop() {
         let timeoutId = setTimeout(() => {
             if (!this.state.isGameOver) {
-                this.moveSnake()
-                this.tryToEatSnake()
+                this.moveship()
+                this.tryToEatship()
                 this.tryToEatApple()
                 this.setState({ directionChanged: false })
             }
@@ -157,16 +157,16 @@ class Game extends React.Component {
         let blockHeight = this.state.blockHeight
         let apple = this.state.apple
 
-        // snake reset
-        let snake = []
+        // ship reset
+        let ship = []
         let Xpos = width / 2
         let Ypos = height / 2
-        let snakeHead = { Xpos: width / 2, Ypos: height / 2 }
-        snake.push(snakeHead)
-        for (let i = 1; i < this.state.startSnakeSize; i++) {
+        let shipHead = { Xpos: width / 2, Ypos: height / 2 }
+        ship.push(shipHead)
+        for (let i = 1; i < this.state.startshipSize; i++) {
             Xpos -= blockWidth
-            let snakePart = { Xpos: Xpos, Ypos: Ypos }
-            snake.push(snakePart)
+            let shipPart = { Xpos: Xpos, Ypos: Ypos }
+            ship.push(shipPart)
         }
 
         // apple position reset
@@ -176,7 +176,7 @@ class Game extends React.Component {
         apple.Ypos =
             Math.floor(Math.random() * ((height - blockHeight) / blockHeight + 1)) *
             blockHeight
-        while (this.isAppleOnSnake(apple.Xpos, apple.Ypos)) {
+        while (this.isAppleOnship(apple.Xpos, apple.Ypos)) {
             apple.Xpos =
                 Math.floor(Math.random() * ((width - blockWidth) / blockWidth + 1)) *
                 blockWidth
@@ -186,13 +186,13 @@ class Game extends React.Component {
         }
 
         this.setState({
-            snake,
+            ship,
             apple,
             direction: 'right',
             directionChanged: false,
             isGameOver: false,
             gameLoopTimeout: 50,
-            snakeColor: this.getRandomColor(),
+            shipColor: this.getRandomColor(),
             appleColor: this.getRandomColor(),
             score: 0,
             newHighScore: false,
@@ -206,30 +206,30 @@ class Game extends React.Component {
         return color
     }
 
-    moveSnake() {
-        let snake = this.state.snake
-        let previousPartX = this.state.snake[0].Xpos
-        let previousPartY = this.state.snake[0].Ypos
+    moveship() {
+        let ship = this.state.ship
+        let previousPartX = this.state.ship[0].Xpos
+        let previousPartY = this.state.ship[0].Ypos
         let tmpPartX = previousPartX
         let tmpPartY = previousPartY
         this.moveHead()
-        for (let i = 1; i < snake.length; i++) {
-            tmpPartX = snake[i].Xpos
-            tmpPartY = snake[i].Ypos
-            snake[i].Xpos = previousPartX
-            snake[i].Ypos = previousPartY
+        for (let i = 1; i < ship.length; i++) {
+            tmpPartX = ship[i].Xpos
+            tmpPartY = ship[i].Ypos
+            ship[i].Xpos = previousPartX
+            ship[i].Ypos = previousPartY
             previousPartX = tmpPartX
             previousPartY = tmpPartY
         }
-        this.setState({ snake })
+        this.setState({ ship })
     }
 
     tryToEatApple() {
-        let snake = this.state.snake
+        let ship = this.state.ship
         let apple = this.state.apple
 
-        // if the snake's head is on an apple
-        if (snake[0].Xpos === apple.Xpos && snake[0].Ypos === apple.Ypos) {
+        // if the ship's head is on an apple
+        if (ship[0].Xpos === apple.Xpos && ship[0].Ypos === apple.Ypos) {
             let width = this.state.width
             let height = this.state.height
             let blockWidth = this.state.blockWidth
@@ -239,8 +239,8 @@ class Game extends React.Component {
             let newHighScore = this.state.newHighScore
             let gameLoopTimeout = this.state.gameLoopTimeout
 
-            // increase snake size
-            snake.push(newTail)
+            // increase ship size
+            ship.push(newTail)
 
             // create another apple
             apple.Xpos =
@@ -249,7 +249,7 @@ class Game extends React.Component {
             apple.Ypos =
                 Math.floor(Math.random() * ((height - blockHeight) / blockHeight + 1)) *
                 blockHeight
-            while (this.isAppleOnSnake(apple.Xpos, apple.Ypos)) {
+            while (this.isAppleOnship(apple.Xpos, apple.Ypos)) {
                 apple.Xpos =
                     Math.floor(Math.random() * ((width - blockWidth) / blockWidth + 1)) *
                     blockWidth
@@ -262,7 +262,7 @@ class Game extends React.Component {
             // increment high score if needed
             if (this.state.score === highScore) {
                 highScore++
-                localStorage.setItem('snakeHighScore', highScore)
+                localStorage.setItem('shipHighScore', highScore)
                 newHighScore = true
             }
 
@@ -270,7 +270,7 @@ class Game extends React.Component {
             if (gameLoopTimeout > 25) gameLoopTimeout -= 0.5
 
             this.setState({
-                snake,
+                ship,
                 apple,
                 score: this.state.score + 1,
                 highScore,
@@ -280,19 +280,19 @@ class Game extends React.Component {
         }
     }
 
-    tryToEatSnake() {
-        let snake = this.state.snake
+    tryToEatship() {
+        let ship = this.state.ship
 
-        for (let i = 1; i < snake.length; i++) {
-            if (snake[0].Xpos === snake[i].Xpos && snake[0].Ypos === snake[i].Ypos)
+        for (let i = 1; i < ship.length; i++) {
+            if (ship[0].Xpos === ship[i].Xpos && ship[0].Ypos === ship[i].Ypos)
                 this.setState({ isGameOver: true })
         }
     }
 
-    isAppleOnSnake(appleXpos, appleYpos) {
-        let snake = this.state.snake
-        for (let i = 0; i < snake.length; i++) {
-            if (appleXpos === snake[i].Xpos && appleYpos === snake[i].Ypos)
+    isAppleOnship(appleXpos, appleYpos) {
+        let ship = this.state.ship
+        for (let i = 0; i < ship.length; i++) {
+            if (appleXpos === ship[i].Xpos && appleYpos === ship[i].Ypos)
                 return true
         }
         return false
@@ -317,37 +317,37 @@ class Game extends React.Component {
     moveHeadLeft() {
         let width = this.state.width
         let blockWidth = this.state.blockWidth
-        let snake = this.state.snake
-        snake[0].Xpos =
-            snake[0].Xpos <= 0 ? width - blockWidth : snake[0].Xpos - blockWidth
-        this.setState({ snake })
+        let ship = this.state.ship
+        ship[0].Xpos =
+            ship[0].Xpos <= 0 ? width - blockWidth : ship[0].Xpos - blockWidth
+        this.setState({ ship })
     }
 
     moveHeadUp() {
         let height = this.state.height
         let blockHeight = this.state.blockHeight
-        let snake = this.state.snake
-        snake[0].Ypos =
-            snake[0].Ypos <= 0 ? height - blockHeight : snake[0].Ypos - blockHeight
-        this.setState({ snake })
+        let ship = this.state.ship
+        ship[0].Ypos =
+            ship[0].Ypos <= 0 ? height - blockHeight : ship[0].Ypos - blockHeight
+        this.setState({ ship })
     }
 
     moveHeadRight() {
         let width = this.state.width
         let blockWidth = this.state.blockWidth
-        let snake = this.state.snake
-        snake[0].Xpos =
-            snake[0].Xpos >= width - blockWidth ? 0 : snake[0].Xpos + blockWidth
-        this.setState({ snake })
+        let ship = this.state.ship
+        ship[0].Xpos =
+            ship[0].Xpos >= width - blockWidth ? 0 : ship[0].Xpos + blockWidth
+        this.setState({ ship })
     }
 
     moveHeadDown() {
         let height = this.state.height
         let blockHeight = this.state.blockHeight
-        let snake = this.state.snake
-        snake[0].Ypos =
-            snake[0].Ypos >= height - blockHeight ? 0 : snake[0].Ypos + blockHeight
-        this.setState({ snake })
+        let ship = this.state.ship
+        ship[0].Ypos =
+            ship[0].Ypos >= height - blockHeight ? 0 : ship[0].Ypos + blockHeight
+        this.setState({ ship })
     }
 
     handleKeyDown(event) {
@@ -434,7 +434,7 @@ class Game extends React.Component {
                             height: this.state.height,
                             borderWidth: this.state.width / 50,
                         }}>
-                        {this.state.snake.map((snakePart, index) => {
+                        {this.state.ship.map((shipPart, index) => {
                             return (
                                 <div
                                     key={index}
@@ -442,9 +442,9 @@ class Game extends React.Component {
                                     style={{
                                         width: this.state.blockWidth,
                                         height: this.state.blockHeight,
-                                        left: snakePart.Xpos,
-                                        top: snakePart.Ypos,
-                                        background: this.state.snakeColor,
+                                        left: shipPart.Xpos,
+                                        top: shipPart.Ypos,
+                                        background: this.state.shipColor,
                                     }}
                                 />
                             )

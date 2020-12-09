@@ -44,6 +44,10 @@ function Settings() {
         if (gameType == false) {
             return (
                 <div><p>MINEFIELD MODE: DEACTIVATED</p>
+                    <div>
+                        <p><u>(Control Ship Using Arrow Keys)</u></p>
+                    </div>
+
                     <Link to="/Game">
                         <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
                     </Link>
@@ -52,6 +56,9 @@ function Settings() {
             return (
                 <div>
                     <p>MINEFIELD MODE: <b>ACTIVATED</b></p>
+                    <div>
+                        <p><u>(Control Ship Using Arrow Keys)</u></p>
+                    </div>
                     <Link to="/SuddenDeathGame">
                         <Button variant="contained" color="primary" >START YOUR ESCAPE</Button >
                     </Link>
